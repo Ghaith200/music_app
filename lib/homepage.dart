@@ -42,10 +42,10 @@ class _HomepageState extends State<Homepage> {
             height: 120,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: musicRepo.recommended.length,
+              itemCount: musicRepo.home.length,
               itemBuilder: (context, index) {
                 return ArtistsForYouWidget(
-                    musicModel: musicRepo.recommended[index]);
+                    musicModel: musicRepo.home[index]);
               },
             ),
           ),
@@ -61,10 +61,10 @@ class _HomepageState extends State<Homepage> {
             height: 160,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: musicRepo.recommended.length,
+              itemCount: musicRepo.home.length,
               itemBuilder: (context, index) {
                 return NewReleasesWidget(
-                    musicModel: musicRepo.recommended[index]);
+                    musicModel: musicRepo.home[index]);
               },
             ),
           ),
@@ -83,10 +83,10 @@ class _HomepageState extends State<Homepage> {
             padding: EdgeInsets.all(5),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: musicRepo.recommended.length,
+              itemCount: musicRepo.home.length,
               itemBuilder: (context, index) {
                 return RecommendedForYouWidget(
-                    musicModel: musicRepo.recommended[index]);
+                    musicModel: musicRepo.home[index]);
               },
             ),
           ),

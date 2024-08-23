@@ -42,4 +42,5 @@ class Lists {
 
 class MusicRepo {
   List<MusicModel> recommended = [];
+  List<MusicModel> home = [];
 }

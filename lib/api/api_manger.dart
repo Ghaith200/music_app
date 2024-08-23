@@ -10,15 +10,15 @@ import 'package:music_app/lists.dart';
 import 'package:http/http.dart' as http;
 
 void main() async {
-  Api1 api = Api1();
-  await api.getRecommended();
+  ApiManger api = ApiManger();
+  await api.getmoodes();
 }
 
-class Api1 {
+class ApiManger {
   Future getRecommended() async {
     try {
       var responce = await http.get(
-        Uri.parse(recomendedbaseurl),
+        Uri.parse('$rapidApiRecommended'),
         headers: {
           'x-rapidapi-host': '$rapidapihost',
           'x-rapidapi-key': '$rapidapikey',
@@ -30,14 +30,53 @@ class Api1 {
           Map<String, dynamic> data = json.decode(responce.body);
           if (data.containsKey('results')) {
             for (var element in data['results']) {
-              musicRepo.recommended.add(MusicModel(
+              musicRepo.home.add(MusicModel(
                   musicId: element['videoId'],
                   musicTitle: element['title'],
                   musicAuthor: element['author'],
                   musicThumbnail: element['thumbnail']));
             }
             print("==============================");
-            print(musicRepo.recommended);
+            print(musicRepo.home);
+            print("==============================");
+          } else {
+            print('Results key not found in response.');
+          }
+        } catch (e) {
+          print('Failed to parse JSON: $e');
+        }
+      } else {
+        print('Failed to load data. Status code: ${responce.statusCode}');
+      }
+    } catch (a) {
+      print('Request failed: $a');
+    }
+  }
+//------------------{Grt moodes and genre}-------------------
+
+  Future getmoodes() async {
+    try {
+      var responce = await http.get(
+        Uri.parse('$rapidApiMoods'),
+        headers: {
+          'x-rapidapi-host': '$rapidapihost',
+          'x-rapidapi-key': '$rapidapikey',
+        },
+      );
+      if (responce.statusCode == 200) {
+        print(responce.statusCode);
+        try {
+          Map<String, dynamic> data = json.decode(responce.body);
+          if (data.containsKey('results')) {
+            for (var element in data['results']) {
+              musicRepo.home.add(MusicModel(
+                  musicId: element['videoId'],
+                  musicTitle: element['title'],
+                  musicAuthor: element['author'],
+                  musicThumbnail: element['thumbnail']));
+            }
+            print("==============================");
+            print(musicRepo.home);
             print("==============================");
           } else {
             print('Results key not found in response.');

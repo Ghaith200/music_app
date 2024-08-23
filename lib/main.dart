@@ -9,11 +9,10 @@ import 'package:music_app/account.dart';
 
 void main() async {
   setup();
-  Api1 api = Api1();
+  ApiManger api = ApiManger();
   await api.getRecommended();
   runApp(MyApp());
 }
-
 
 class MyApp extends StatefulWidget {
   MyApp({super.key});
