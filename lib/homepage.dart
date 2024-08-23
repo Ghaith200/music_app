@@ -29,7 +29,7 @@ class _HomepageState extends State<Homepage> {
             padding: const EdgeInsets.symmetric(
               vertical: 10,
             ),
-            child: Text(
+            child: const Text(
               "Artists For You ",
               style: TextStyle(
                   color: Colors.white,
@@ -38,7 +38,7 @@ class _HomepageState extends State<Homepage> {
                   fontFamily: ""),
             ),
           ),
-          Container(
+          SizedBox(
             height: 120,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -50,7 +50,7 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: const Text(
               "New releases",
               style: TextStyle(
@@ -69,10 +69,10 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: 10,
             ),
-            child: Text(
+            child: const Text(
               "Recomended \nfor you today ",
               style: TextStyle(
                   color: Colors.white, fontSize: 20, letterSpacing: 3),
@@ -80,7 +80,7 @@ class _HomepageState extends State<Homepage> {
           ),
           Container(
             height: 190,
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: musicRepo.home.length,
@@ -94,9 +94,9 @@ class _HomepageState extends State<Homepage> {
             alignment: Alignment.center,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 66, 64, 64),
+                margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 66, 64, 64),
                     borderRadius: BorderRadius.all(Radius.circular(26))),
                 clipBehavior: Clip.antiAlias,
                 child: Image.asset(
@@ -105,7 +105,7 @@ class _HomepageState extends State<Homepage> {
                   height: 200,
                 ),
               ),
-              Align(
+              const Align(
                 child: Text(
                   "Collections",
                   style: TextStyle(color: Colors.white, fontSize: 35),

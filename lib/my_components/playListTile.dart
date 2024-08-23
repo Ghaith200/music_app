@@ -8,15 +8,14 @@ class PlaylistTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var artists = musicRepo.recommended;
+
     MusicModel? musicModel;
 
-    return Container(
+    return  Container(
       height: 400.0, // Set a fixed height for the container
       child: ListView.builder(
-        itemCount: artists.length,
+        itemCount:musicRepo.home.length,
         itemBuilder: (context, index) {
-          var artist = artists[index];
           return ListTile(
             leading: Container(
               width: 50,
@@ -25,7 +24,7 @@ class PlaylistTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
               clipBehavior: Clip.antiAlias,
-              child: Image.asset(
+              child: Image.network(
                     musicModel!.musicThumbnail,
                     fit: BoxFit.cover,
                   ) ??

@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:http/http.dart';
 import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/constants/api_constants.dart';
 import 'package:music_app/homepage.dart';
-import 'package:music_app/locator.dart';
+
 import 'api_header.dart';
 import 'package:music_app/lists.dart';
 import 'package:http/http.dart' as http;
