@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/homepage.dart';
 import 'package:music_app/lists.dart';
 
@@ -8,6 +9,7 @@ class PlaylistTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var artists = musicRepo.recommended;
+    MusicModel? musicModel;
 
     return Container(
       height: 400.0, // Set a fixed height for the container
@@ -23,25 +25,24 @@ class PlaylistTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
               clipBehavior: Clip.antiAlias,
-              child: artist["image"] != null
-                  ? Image.asset(
-                      musicRepo.recommended[index]['thumbnail'],
-                      fit: BoxFit.cover,
-                    )
-                  : Container(
-                      color: Colors.grey, // Placeholder if image is null
-                    ),
+              child: Image.asset(
+                    musicModel!.musicThumbnail,
+                    fit: BoxFit.cover,
+                  ) ??
+                  Container(
+                    color: Colors.grey, // Placeholder if image is null
+                  ),
             ),
             trailing: IconButton(
               onPressed: () {},
               icon: Icon(Icons.more_horiz),
             ),
             title: Text(
-              artist["title"] ?? 'Unknown Artist',
+              musicModel.musicTitle ?? 'Unknown Artist',
               style: TextStyle(color: Colors.white),
             ),
             subtitle: Text(
-              artist["author"] ?? 'No details available',
+              musicModel.musicAuthor ?? 'No details available',
               style: TextStyle(color: Colors.white70),
             ),
           );

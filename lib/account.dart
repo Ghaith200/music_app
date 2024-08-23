@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/homepage.dart';
 import 'package:music_app/lists.dart';
 import 'api/api_manger.dart';
 
 class AccountScreen extends StatelessWidget {
+  MusicModel? musicModel;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,11 +90,13 @@ class AccountScreen extends StatelessWidget {
           SizedBox(
             height: 150,
             child: ListView.builder(
-              itemCount:musicRepo.recommended.length,
+              itemCount: musicRepo.recommended.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                _buildPlaylistCard(musicRepo.recommended [index]['thumbnail'],
-                    musicRepo.recommended [index]['author']);
+                _buildPlaylistCard(
+                  musicModel!.musicTitle ?? 'Unknown Title',
+                  musicModel!.musicAuthor ?? 'Unknown Artist',
+                );
               },
             ),
           ),
@@ -111,15 +115,15 @@ class AccountScreen extends StatelessWidget {
             height: 150,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount:musicRepo.recommended.length,
+              itemCount: musicRepo.recommended.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 7),
                   child: Container(
                     width: 180,
                     child: _buildFavoritePlaylistCard(
-                        musicRepo.recommended [index]['thumbnail'],
-                        musicRepo.recommended [index]['author']),
+                        musicModel!.musicThumbnail ?? 'Unknown Thumbnail',
+                        musicModel!.musicTitle ?? 'Unknown Title'),
                   ),
                 );
               },
