@@ -10,7 +10,7 @@ import 'package:music_app/account.dart';
 void main() async {
   setup();
   ApiManger api = ApiManger();
-  await api.getRecommended();
+  await api.gethome();
   runApp(MyApp());
 }
 

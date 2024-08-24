@@ -8,13 +8,12 @@ class PlaylistTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     MusicModel? musicModel;
 
-    return  Container(
+    return Container(
       height: 400.0, // Set a fixed height for the container
       child: ListView.builder(
-        itemCount:musicRepo.home.length,
+        itemCount: musicRepo.home.length,
         itemBuilder: (context, index) {
           return ListTile(
             leading: Container(
@@ -29,7 +28,7 @@ class PlaylistTile extends StatelessWidget {
                     fit: BoxFit.cover,
                   ) ??
                   Container(
-                    color: Colors.grey, // Placeholder if image is null
+                    color: Colors.grey,
                   ),
             ),
             trailing: IconButton(

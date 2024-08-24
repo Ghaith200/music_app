@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 void main() async {
   ApiManger api = ApiManger();
-  await api.getmoodes();
+  await api.gethome();
 }
 
 class ApiManger {
@@ -51,35 +51,21 @@ class ApiManger {
       print('Request failed: $a');
     }
   }
-//------------------{Grt moodes and genre}-------------------
+//------------------{Get Home}-------------------
 
-  Future getmoodes() async {
+  Future gethome() async {
     try {
       var responce = await http.get(
-        Uri.parse('$rapidApiMoods'),
+        Uri.parse('$rapidapihome'),
         headers: {
           'x-rapidapi-host': '$rapidapihost',
           'x-rapidapi-key': '$rapidapikey',
         },
       );
       if (responce.statusCode == 200) {
-        print(responce.statusCode);
         try {
-          Map<String, dynamic> data = json.decode(responce.body);
-          if (data.containsKey('results')) {
-            for (var element in data['results']) {
-              musicRepo.home.add(MusicModel(
-                  musicId: element['videoId'],
-                  musicTitle: element['title'],
-                  musicAuthor: element['author'],
-                  musicThumbnail: element['thumbnail']));
-            }
-            print("==============================");
-            print(musicRepo.home);
-            print("==============================");
-          } else {
-            print('Results key not found in response.');
-          }
+          Map data = json.decode(responce.body);
+          print(data);
         } catch (e) {
           print('Failed to parse JSON: $e');
         }
