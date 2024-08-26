@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/homepage.dart';
-import 'package:music_app/lists.dart';
+import 'package:music_app/my_components/lists.dart';
 
 class PlaylistTile extends StatelessWidget {
   const PlaylistTile({super.key});
@@ -13,7 +13,7 @@ class PlaylistTile extends StatelessWidget {
     return Container(
       height: 400.0, // Set a fixed height for the container
       child: ListView.builder(
-        itemCount: musicRepo.home.length,
+        itemCount: musicRepo.playlist.length,
         itemBuilder: (context, index) {
           return ListTile(
             leading: Container(

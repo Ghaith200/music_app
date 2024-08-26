@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/lists.dart';
+import 'package:music_app/my_components/lists.dart';
 import 'package:music_app/locator.dart';
 import 'package:music_app/my_components/artists_for_you_widget.dart';
 import 'package:music_app/my_components/new_releases_widget.dart';
 import 'package:music_app/my_components/recommended_for_you_widget.dart';
-import 'package:music_app/playlist.dart';
+import 'package:music_app/Pages/playlist.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -42,9 +42,9 @@ class _HomepageState extends State<Homepage> {
             height: 120,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: musicRepo.home.length,
+              itemCount: Lists().artistsForYou.length,
               itemBuilder: (context, index) {
-                return ArtistsForYouWidget(musicModel: musicRepo.home[index]);
+                return ArtistsForYouWidget(index: index);
               },
             ),
           ),

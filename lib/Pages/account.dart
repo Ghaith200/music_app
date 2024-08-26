@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/homepage.dart';
-import 'package:music_app/lists.dart';
-import 'api/api_manger.dart';
+import 'package:music_app/my_components/lists.dart';
+import '../api/api_manger.dart';
 
 class AccountScreen extends StatelessWidget {
   MusicModel? musicModel;
@@ -94,8 +94,8 @@ class AccountScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 _buildPlaylistCard(
-                  musicModel!.musicTitle ?? 'Unknown Title',
-                  musicModel!.musicAuthor ?? 'Unknown Artist',
+                   'Unknown Title',
+                   'Unknown Artist',
                 );
               },
             ),
@@ -122,8 +122,8 @@ class AccountScreen extends StatelessWidget {
                   child: Container(
                     width: 180,
                     child: _buildFavoritePlaylistCard(
-                        musicModel!.musicThumbnail ?? 'Unknown Thumbnail',
-                        musicModel!.musicTitle ?? 'Unknown Title'),
+                        'Unknown Thumbnail',
+                       'Unknown Title'),
                   ),
                 );
               },

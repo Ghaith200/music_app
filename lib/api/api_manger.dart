@@ -5,7 +5,7 @@ import 'package:music_app/constants/api_constants.dart';
 import 'package:music_app/homepage.dart';
 
 import 'api_header.dart';
-import 'package:music_app/lists.dart';
+import 'package:music_app/my_components/lists.dart';
 import 'package:http/http.dart' as http;
 
 void main() async {
@@ -89,27 +89,45 @@ class ApiManger {
     } catch (a) {
       print('Request failed: $a');
     }
-    // try {
-    //   var responce = await http.get(
-    //     Uri.parse('$rapidapihome'),
-    //     headers: {
-    //       'x-rapidapi-host': '$rapidapihost',
-    //       'x-rapidapi-key': '$rapidapikey',
-    //     },
-    //   );
-    //   if (responce.statusCode == 200) {
-    //     try {
-    //       Map<List, dynamic> data = json.decode(responce.body);
-    //       print(data);
-    //     } catch (e) {
-    //       print('Failed to parse JSON: $e');
-    //     }
-    //   } else {
-    //     print('Failed to load data. Status code: ${responce.statusCode}');
-    //   }
-    // } catch (a) {
-    //   print('Request failed: $a');
-    // }
+  }
+
+  //------------------{Get PLaylist}-------------------
+  Future getPlaylist() async {
+    try {
+      var responce = await http.get(
+        Uri.parse('$rapidapihome'),
+        headers: {
+          'x-rapidapi-host': '$rapidapihost',
+          'x-rapidapi-key': '$rapidapikey',
+        },
+      );
+      if (responce.statusCode == 200) {
+        print(responce.statusCode);
+        try {
+          Map<String, dynamic> data = json.decode(responce.body);
+          if (data.containsKey('results')) {
+            for (var element in data['results']["music_this_year"]["list"]) {
+              musicRepo.playlist.add(MusicModel(
+                  musicId: element['playlistId'],
+                  musicTitle: element['title'],
+                  musicAuthor: element['subtitle'],
+                  musicThumbnail: element['thumbnail']));
+            }
+            print("==============================");
+            print(data['results']["new_release_albums"]);
+            print("==============================");
+          } else {
+            print('Results key not found in response.');
+          }
+        } catch (e) {
+          print('Failed to parse JSON: $e');
+        }
+      } else {
+        print('Failed to load data. Status code: ${responce.statusCode}');
+      }
+    } catch (a) {
+      print('Request failed: $a');
+    }
   }
 }
 

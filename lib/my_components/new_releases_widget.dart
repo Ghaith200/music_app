@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:music_app/api/model/music_model.dart';
+import 'package:music_app/my_components/custom_progress_indecator.dart';
 
 class NewReleasesWidget extends StatelessWidget {
   NewReleasesWidget({super.key, required this.musicModel});
@@ -36,9 +38,12 @@ class NewReleasesWidget extends StatelessWidget {
                                   ),
                                 ),
                                 clipBehavior: Clip.antiAlias,
-                                child: Image.network(
-                                  musicModel.musicThumbnail,
-                                  fit: BoxFit.cover,
+                                child: CachedNetworkImage(
+                                  imageUrl: musicModel.musicThumbnail,
+                                  placeholder: (context, url) =>
+                                      CustomProgressIndecator(),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
                                 ),
                               ),
                               Container(

@@ -20,27 +20,10 @@ class Lists {
     {"image": "assets/images/profiles/gyle.jpg", "title": "gyle"},
     {"image": "assets/images/profiles/ketty perry.jpg", "title": "kety perry"},
   ];
-
-  List newReleases = [
-    {
-      "image": "assets/images/new_release/Rip love faouzia.jpg",
-      "title": "R.I.P Love",
-      "author": "Faouzia "
-    },
-    {
-      "image": "assets/images/new_release/friends anne marie.jpg",
-      "title": "Friends",
-      "author": "Anne Marie "
-    },
-    {
-      "image": "assets/images/new_release/NewJeans league.jpg",
-      "title": "League of Legends",
-      "author": "New Jeans "
-    },
-  ];
 }
 
 class MusicRepo {
   List<MusicModel> recommended = [];
   List<MusicModel> home = [];
+  List<MusicModel> playlist = [];
 }
