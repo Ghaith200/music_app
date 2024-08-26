@@ -11,6 +11,7 @@ void main() async {
   setup();
   ApiManger api = ApiManger();
   await api.gethome();
+  await api.getRecommended();
   runApp(MyApp());
 }
 

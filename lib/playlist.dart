@@ -78,17 +78,18 @@ class _PlaylistState extends State<Playlist> {
                         child: Stack(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(5),
                               width: 250,
                               height: 250,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(85),
-                              ),
-                              child: Image.asset(
-                                data["image"] ??
-                                    'assets/images/profiles/playlist.jpg',
-                                fit: BoxFit.cover,
+                              child: Container(
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(90),
+                                ),
+                                child: Image.asset(
+                                  data["image"] ??
+                                      'assets/images/profiles/playlist.jpg',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             Positioned(

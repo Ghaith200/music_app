@@ -29,7 +29,7 @@ class ApiManger {
           Map<String, dynamic> data = json.decode(responce.body);
           if (data.containsKey('results')) {
             for (var element in data['results']) {
-              musicRepo.home.add(MusicModel(
+              musicRepo.recommended.add(MusicModel(
                   musicId: element['videoId'],
                   musicTitle: element['title'],
                   musicAuthor: element['author'],
@@ -63,9 +63,23 @@ class ApiManger {
         },
       );
       if (responce.statusCode == 200) {
+        print(responce.statusCode);
         try {
-          Map<List, dynamic> data = json.decode(responce.body);
-          print(data);
+          Map<String, dynamic> data = json.decode(responce.body);
+          if (data.containsKey('results')) {
+            for (var element in data['results']["new_release_albums"]) {
+              musicRepo.home.add(MusicModel(
+                  musicId: element['playlistId'],
+                  musicTitle: element['title'],
+                  musicAuthor: element['subtitle'],
+                  musicThumbnail: element['thumbnail']));
+            }
+            print("==============================");
+            print(data['results']["new_release_albums"]);
+            print("==============================");
+          } else {
+            print('Results key not found in response.');
+          }
         } catch (e) {
           print('Failed to parse JSON: $e');
         }
@@ -75,6 +89,27 @@ class ApiManger {
     } catch (a) {
       print('Request failed: $a');
     }
+    // try {
+    //   var responce = await http.get(
+    //     Uri.parse('$rapidapihome'),
+    //     headers: {
+    //       'x-rapidapi-host': '$rapidapihost',
+    //       'x-rapidapi-key': '$rapidapikey',
+    //     },
+    //   );
+    //   if (responce.statusCode == 200) {
+    //     try {
+    //       Map<List, dynamic> data = json.decode(responce.body);
+    //       print(data);
+    //     } catch (e) {
+    //       print('Failed to parse JSON: $e');
+    //     }
+    //   } else {
+    //     print('Failed to load data. Status code: ${responce.statusCode}');
+    //   }
+    // } catch (a) {
+    //   print('Request failed: $a');
+    // }
   }
 }
 

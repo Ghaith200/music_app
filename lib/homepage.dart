@@ -44,8 +44,7 @@ class _HomepageState extends State<Homepage> {
               scrollDirection: Axis.horizontal,
               itemCount: musicRepo.home.length,
               itemBuilder: (context, index) {
-                return ArtistsForYouWidget(
-                    musicModel: musicRepo.home[index]);
+                return ArtistsForYouWidget(musicModel: musicRepo.home[index]);
               },
             ),
           ),
@@ -63,8 +62,7 @@ class _HomepageState extends State<Homepage> {
               scrollDirection: Axis.horizontal,
               itemCount: musicRepo.home.length,
               itemBuilder: (context, index) {
-                return NewReleasesWidget(
-                    musicModel: musicRepo.home[index]);
+                return NewReleasesWidget(musicModel: musicRepo.home[index]);
               },
             ),
           ),
@@ -83,10 +81,10 @@ class _HomepageState extends State<Homepage> {
             padding: const EdgeInsets.all(5),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: musicRepo.home.length,
+              itemCount: musicRepo.recommended.length,
               itemBuilder: (context, index) {
                 return RecommendedForYouWidget(
-                    musicModel: musicRepo.home[index]);
+                    musicModel: musicRepo.recommended[index]);
               },
             ),
           ),
