@@ -64,7 +64,7 @@ class ApiManger {
       );
       if (responce.statusCode == 200) {
         try {
-          Map data = json.decode(responce.body);
+          Map<List, dynamic> data = json.decode(responce.body);
           print(data);
         } catch (e) {
           print('Failed to parse JSON: $e');
