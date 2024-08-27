@@ -13,7 +13,7 @@ class MyAppBar extends StatelessWidget {
       ),
       actions: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 12),
+          margin: const EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
           clipBehavior: Clip.antiAlias,
           child: Image.asset(

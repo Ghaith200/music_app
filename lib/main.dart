@@ -10,11 +10,11 @@ import 'package:music_app/Pages/account.dart';
 
 void main() async {
   setup();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -25,9 +25,9 @@ class _MyAppState extends State<MyApp> {
   bool _isLoading = true; // Track loading state
 
   final List<Widget> _listwidget = [
-    Playlist(showBackArrow: false), // Index 2, no back arrow
+    const Playlist(showBackArrow: false), // Index 2, no back arrow
     const Homepage(), // Index 1
-    AccountScreen(), // Index 0
+    const AccountScreen(), // Index 0
   ];
 
   @override
@@ -67,7 +67,7 @@ class _MyAppState extends State<MyApp> {
         body: _isLoading // Show a progress indicator while loading
             ? Container(
                 color: Colors.black,
-                child: Center(child: CustomProgressIndecator()),
+                child: const Center(child: CustomProgressIndecator()),
               )
             : _listwidget.elementAt(_selectedIndex),
         bottomNavigationBar:

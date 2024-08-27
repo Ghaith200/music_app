@@ -11,7 +11,7 @@ class CustomProgressIndecator extends StatefulWidget {
 class _CustomProgressIndecatorState extends State<CustomProgressIndecator> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: CircularProgressIndicator(
         color: Colors.orange,
         backgroundColor: Colors.black,

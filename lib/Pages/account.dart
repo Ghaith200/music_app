@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/homepage.dart';
-import 'package:music_app/my_components/lists.dart';
-import '../api/api_manger.dart';
 
 class AccountScreen extends StatelessWidget {
-  MusicModel? musicModel;
+  final MusicModel? musicModel;
+
+  const AccountScreen({super.key, this.musicModel});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,6 +97,7 @@ class AccountScreen extends StatelessWidget {
                    'Unknown Title',
                    'Unknown Artist',
                 );
+                return null;
               },
             ),
           ),
@@ -111,15 +112,15 @@ class AccountScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          Container(
+          SizedBox(
             height: 150,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: musicRepo.recommended.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 7),
-                  child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 7),
+                  child: SizedBox(
                     width: 180,
                     child: _buildFavoritePlaylistCard(
                         'Unknown Thumbnail',

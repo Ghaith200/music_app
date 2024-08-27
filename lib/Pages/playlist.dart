@@ -7,7 +7,7 @@ class Playlist extends StatefulWidget {
   final Map<String, dynamic>? data;
   final bool showBackArrow;
 
-  Playlist({super.key, this.data, this.showBackArrow = true});
+  const Playlist({super.key, this.data, this.showBackArrow = true});
 
   @override
   State<Playlist> createState() => _PlaylistState();
@@ -67,17 +67,17 @@ class _PlaylistState extends State<Playlist> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.arrow_back_ios_new, color: Colors.white),
+                      icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
                     ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
                         margin:
-                            EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+                            const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
                         child: Stack(
                           children: [
-                            Container(
+                            SizedBox(
                               width: 250,
                               height: 250,
                               child: Container(
@@ -96,7 +96,7 @@ class _PlaylistState extends State<Playlist> {
                               bottom: 0,
                               right: 0,
                               child: Transform.translate(
-                                offset: Offset(10, 0),
+                                offset: const Offset(10, 0),
                                 child: IconButton(
                                   onPressed: () {},
                                   icon: CircleAvatar(
@@ -117,31 +117,31 @@ class _PlaylistState extends State<Playlist> {
                       ),
                       Text(
                         data['title'] ?? 'Your Playlist',
-                        style: TextStyle(fontSize: 30, color: Colors.white),
+                        style: const TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ],
                   )
                 ],
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   children: [
-                    Text(
+                    const Text(
                       "Top Songs",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 22,
                           fontFamily: "LexendExa"),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     MaterialButton(
-                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
                       color: Colors.red,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
                       onPressed: () {},
-                      child: Text("see all",
+                      child: const Text("see all",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
@@ -150,7 +150,7 @@ class _PlaylistState extends State<Playlist> {
                   ],
                 ),
               ),
-              SizedBox(height: 500, child: PlaylistTile()),
+              const SizedBox(height: 500, child: PlaylistTile()),
             ],
           ),
         ],

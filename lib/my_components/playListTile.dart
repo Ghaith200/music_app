@@ -1,7 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/homepage.dart';
-import 'package:music_app/my_components/lists.dart';
+
 
 class PlaylistTile extends StatelessWidget {
   const PlaylistTile({super.key});
@@ -10,7 +12,7 @@ class PlaylistTile extends StatelessWidget {
   Widget build(BuildContext context) {
     MusicModel? musicModel;
 
-    return Container(
+    return SizedBox(
       height: 400.0, // Set a fixed height for the container
       child: ListView.builder(
         itemCount: musicRepo.playlist.length,
@@ -26,22 +28,19 @@ class PlaylistTile extends StatelessWidget {
               child: Image.network(
                     musicModel!.musicThumbnail,
                     fit: BoxFit.cover,
-                  ) ??
-                  Container(
-                    color: Colors.grey,
                   ),
             ),
             trailing: IconButton(
               onPressed: () {},
-              icon: Icon(Icons.more_horiz),
+              icon: const Icon(Icons.more_horiz),
             ),
             title: Text(
-              musicModel.musicTitle ?? 'Unknown Artist',
-              style: TextStyle(color: Colors.white),
+              musicModel.musicTitle,
+              style: const TextStyle(color: Colors.white),
             ),
             subtitle: Text(
-              musicModel.musicAuthor ?? 'No details available',
-              style: TextStyle(color: Colors.white70),
+              musicModel.musicAuthor,
+              style: const TextStyle(color: Colors.white70),
             ),
           );
         },

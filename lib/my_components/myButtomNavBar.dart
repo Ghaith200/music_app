@@ -1,10 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class Mybuttomnavbar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;
 
-  Mybuttomnavbar({
+  const Mybuttomnavbar({
     super.key,
     required this.selectedIndex,
     required this.onItemSelected,
@@ -20,7 +22,7 @@ class Mybuttomnavbar extends StatelessWidget {
       unselectedItemColor: Colors.white,
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      items: [
+      items: const [
         BottomNavigationBarItem(
             icon: Icon(Icons.filter_list), label: "Playlist"),
         BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),

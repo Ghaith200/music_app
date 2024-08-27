@@ -1,11 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
-import 'package:dio/dio.dart';
 import 'package:music_app/api/model/music_model.dart';
-import 'package:music_app/constants/api_constants.dart';
 import 'package:music_app/homepage.dart';
 
 import 'api_header.dart';
-import 'package:music_app/my_components/lists.dart';
 import 'package:http/http.dart' as http;
 
 void main() async {
@@ -17,14 +16,13 @@ class ApiManger {
   Future getRecommended() async {
     try {
       var responce = await http.get(
-        Uri.parse('$rapidApiRecommended'),
+        Uri.parse(rapidApiRecommended),
         headers: {
-          'x-rapidapi-host': '$rapidapihost',
-          'x-rapidapi-key': '$rapidapikey',
+          'x-rapidapi-host': rapidapihost,
+          'x-rapidapi-key': rapidapikey,
         },
       );
       if (responce.statusCode == 200) {
-        print(responce.statusCode);
         try {
           Map<String, dynamic> data = json.decode(responce.body);
           if (data.containsKey('results')) {
@@ -35,9 +33,6 @@ class ApiManger {
                   musicAuthor: element['author'],
                   musicThumbnail: element['thumbnail']));
             }
-            print("==============================");
-            print(musicRepo.home);
-            print("==============================");
           } else {
             print('Results key not found in response.');
           }
@@ -56,10 +51,10 @@ class ApiManger {
   Future gethome() async {
     try {
       var responce = await http.get(
-        Uri.parse('$rapidapihome'),
+        Uri.parse(rapidapihome),
         headers: {
-          'x-rapidapi-host': '$rapidapihost',
-          'x-rapidapi-key': '$rapidapikey',
+          'x-rapidapi-host': rapidapihost,
+          'x-rapidapi-key': rapidapikey,
         },
       );
       if (responce.statusCode == 200) {
@@ -95,10 +90,10 @@ class ApiManger {
   Future getPlaylist() async {
     try {
       var responce = await http.get(
-        Uri.parse('$rapidapihome'),
+        Uri.parse(rapidapihome),
         headers: {
-          'x-rapidapi-host': '$rapidapihost',
-          'x-rapidapi-key': '$rapidapikey',
+          'x-rapidapi-host': rapidapihost,
+          'x-rapidapi-key': rapidapikey,
         },
       );
       if (responce.statusCode == 200) {

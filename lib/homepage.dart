@@ -4,7 +4,6 @@ import 'package:music_app/locator.dart';
 import 'package:music_app/my_components/artists_for_you_widget.dart';
 import 'package:music_app/my_components/new_releases_widget.dart';
 import 'package:music_app/my_components/recommended_for_you_widget.dart';
-import 'package:music_app/Pages/playlist.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -14,7 +13,7 @@ class Homepage extends StatefulWidget {
 }
 
 String? listname;
-String? Pick;
+String? pick;
 MusicRepo musicRepo = getIt.get<MusicRepo>();
 
 class _HomepageState extends State<Homepage> {
@@ -56,7 +55,7 @@ class _HomepageState extends State<Homepage> {
                   color: Colors.white, fontSize: 20, letterSpacing: 2),
             ),
           ),
-          Container(
+          SizedBox(
             height: 160,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
