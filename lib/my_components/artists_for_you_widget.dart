@@ -9,7 +9,7 @@ class ArtistsForYouWidget extends StatelessWidget {
     required this.index,
   });
 
-  final index;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Container(
