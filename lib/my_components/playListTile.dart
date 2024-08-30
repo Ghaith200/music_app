@@ -1,49 +1,42 @@
 // ignore_for_file: file_names
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:music_app/api/model/music_model.dart';
-import 'package:music_app/homepage.dart';
-
+import 'package:music_app/my_components/custom_progress_indecator.dart';
 
 class PlaylistTile extends StatelessWidget {
-  const PlaylistTile({super.key});
+  const PlaylistTile({super.key, required this.musicModel});
 
+  final MusicModel musicModel;
   @override
   Widget build(BuildContext context) {
-    MusicModel? musicModel;
-
-    return SizedBox(
-      height: 400.0, // Set a fixed height for the container
-      child: ListView.builder(
-        itemCount: musicRepo.playlist.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              clipBehavior: Clip.antiAlias,
-              child: Image.network(
-                    musicModel!.musicThumbnail,
-                    fit: BoxFit.cover,
-                  ),
-            ),
-            trailing: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.more_horiz),
-            ),
-            title: Text(
-              musicModel.musicTitle,
-              style: const TextStyle(color: Colors.white),
-            ),
-            subtitle: Text(
-              musicModel.musicAuthor,
-              style: const TextStyle(color: Colors.white70),
-            ),
-          );
-        },
+    return ListTile(
+      leading: Container(
+        width: 50,
+        height: 50,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: CachedNetworkImage(
+          imageUrl: musicModel.musicThumbnail,
+          fit: BoxFit.cover,
+          placeholder: (context, url) => const CustomProgressIndecator(),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
+        ),
+      ),
+      trailing: IconButton(
+        onPressed: () {},
+        icon: const Icon(Icons.more_horiz),
+      ),
+      title: Text(
+        musicModel.musicTitle,
+        style: const TextStyle(color: Colors.white),
+      ),
+      subtitle: Text(
+        musicModel.musicAuthor,
+        style: const TextStyle(color: Colors.white70),
       ),
     );
   }

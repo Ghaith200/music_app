@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/my_components/custom_progress_indecator.dart';
 
-// ignore: must_be_immutable
+
 class NewReleasesWidget extends StatelessWidget {
-  NewReleasesWidget({super.key, required this.musicModel});
-  MusicModel musicModel;
+  const NewReleasesWidget({super.key, required this.musicModel});
+  final MusicModel musicModel;
   @override
   Widget build(BuildContext context) {
     return InkWell(

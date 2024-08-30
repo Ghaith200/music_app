@@ -69,9 +69,6 @@ class ApiManger {
                   musicAuthor: element['subtitle'],
                   musicThumbnail: element['thumbnail']));
             }
-            print("==============================");
-            print(data['results']["new_release_albums"]);
-            print("==============================");
           } else {
             print('Results key not found in response.');
           }
@@ -101,11 +98,52 @@ class ApiManger {
         try {
           Map<String, dynamic> data = json.decode(responce.body);
           if (data.containsKey('results')) {
-            for (var element in data['results']["music_this_year"]["list"]) {
+            for (var element in data['results']["charts"]["top_music_videos"]
+                ["list"]) {
               musicRepo.playlist.add(MusicModel(
-                  musicId: element['playlistId'],
+                  musicId: element['videoId'],
                   musicTitle: element['title'],
                   musicAuthor: element['subtitle'],
+                  musicThumbnail: element['thumbnail']));
+            }
+            print("==============================");
+            print(data['results']["new_release_albums"]);
+            print("==============================");
+          } else {
+            print('Results key not found in response.');
+          }
+        } catch (e) {
+          print('Failed to parse JSON: $e');
+        }
+      } else {
+        print('Failed to load data. Status code: ${responce.statusCode}');
+      }
+    } catch (a) {
+      print('Request failed: $a');
+    }
+  }
+// ---------------------{Get Artists}------------------------
+
+  Future getArtists() async {
+    try {
+      var responce = await http.get(
+        Uri.parse(rapidapihome),
+        headers: {
+          'x-rapidapi-host': rapidapihost,
+          'x-rapidapi-key': rapidapikey,
+        },
+      );
+      if (responce.statusCode == 200) {
+        print(responce.statusCode);
+        try {
+          Map<String, dynamic> data = json.decode(responce.body);
+          if (data.containsKey('results')) {
+            for (var element in data['results']["charts"]["top_artists"]
+                ["list"]) {
+              musicRepo.artists.add(MusicModel(
+                  musicId: element['channelId'],
+                  musicTitle: element['title'],
+                  musicAuthor: element['subscriberText'],
                   musicThumbnail: element['thumbnail']));
             }
             print("==============================");

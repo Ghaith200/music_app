@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/homepage.dart';
 import 'package:music_app/my_components/playListTile.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'dart:ui';
@@ -67,14 +68,15 @@ class _PlaylistState extends State<Playlist> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
+                      icon: const Icon(Icons.arrow_back_ios_new,
+                          color: Colors.white),
                     ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin:
-                            const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 70, vertical: 20),
                         child: Stack(
                           children: [
                             SizedBox(
@@ -117,7 +119,8 @@ class _PlaylistState extends State<Playlist> {
                       ),
                       Text(
                         data['title'] ?? 'Your Playlist',
-                        style: const TextStyle(fontSize: 30, color: Colors.white),
+                        style:
+                            const TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ],
                   )
@@ -136,21 +139,28 @@ class _PlaylistState extends State<Playlist> {
                     ),
                     const Spacer(),
                     MaterialButton(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      color: Colors.red,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      onPressed: () {},
-                      child: const Text("see all",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontFamily: "LexendExa")),
-                    )
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        onPressed: () {},
+                        child: const Row(
+                          children: [
+                            Icon(Icons.favorite_border),
+                            SizedBox(width: 5),
+                            Text("Favourite")
+                          ],
+                        ))
                   ],
                 ),
               ),
-              const SizedBox(height: 500, child: PlaylistTile()),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: musicRepo.playlist.length,
+                itemBuilder: (context, index) {
+                  return PlaylistTile(musicModel: musicRepo.playlist[index]);
+                },
+              )
             ],
           ),
         ],

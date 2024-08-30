@@ -1,15 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'package:music_app/Pages/player.dart';
-import 'package:music_app/my_components/lists.dart';
+import 'package:music_app/api/model/music_model.dart';
+import 'package:music_app/my_components/custom_progress_indecator.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ArtistsForYouWidget extends StatelessWidget {
   const ArtistsForYouWidget({
     super.key,
-    required this.index,
+    required this.musicModel,
   });
 
-  final int index;
+  final MusicModel musicModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,9 +29,11 @@ class ArtistsForYouWidget extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const PlayerPage()));
               },
-              child: Image.asset(
-                Lists().artistsForYou[index]["image"],
+              child: CachedNetworkImage(
+                imageUrl: musicModel.musicThumbnail,
                 fit: BoxFit.cover,
+                placeholder: (context, url) => const CustomProgressIndecator(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
           ),
@@ -41,7 +45,7 @@ class ArtistsForYouWidget extends StatelessWidget {
             child: Text(
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
-              Lists().artistsForYou[index]["title"],
+              musicModel.musicTitle,
               style: const TextStyle(
                 color: Colors.white,
               ),

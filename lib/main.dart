@@ -40,6 +40,8 @@ class _MyAppState extends State<MyApp> {
     ApiManger api = ApiManger();
     await api.gethome();
     await api.getRecommended();
+    await api.getPlaylist();
+    await api.getArtists();
 
     setState(() {
       _isLoading = false;

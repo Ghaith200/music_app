@@ -41,9 +41,9 @@ class _HomepageState extends State<Homepage> {
             height: 120,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: Lists().artistsForYou.length,
+              itemCount: musicRepo.artists.length,
               itemBuilder: (context, index) {
-                return ArtistsForYouWidget(index: index);
+                return ArtistsForYouWidget( musicModel:musicRepo.artists[index],);
               },
             ),
           ),
