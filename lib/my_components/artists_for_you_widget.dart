@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/Pages/player.dart';
 import 'package:music_app/api/model/music_model.dart';
-import 'package:music_app/my_components/custom_progress_indecator.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -25,14 +24,10 @@ class ArtistsForYouWidget extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(21))),
             clipBehavior: Clip.antiAlias,
             child: InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const PlayerPage()));
-              },
+              onTap: () {},
               child: CachedNetworkImage(
                 imageUrl: musicModel.musicThumbnail,
                 fit: BoxFit.cover,
-                placeholder: (context, url) => const CustomProgressIndecator(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),

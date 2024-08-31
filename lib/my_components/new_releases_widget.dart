@@ -1,18 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/Pages/player.dart';
 import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/my_components/custom_progress_indecator.dart';
-
 
 class NewReleasesWidget extends StatelessWidget {
   const NewReleasesWidget({super.key, required this.musicModel});
   final MusicModel musicModel;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        margin: const EdgeInsets.only(right: 10),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: InkWell(
+        onTap: () {},
         child: Column(
           children: [
             Container(
@@ -77,7 +77,13 @@ class NewReleasesWidget extends StatelessWidget {
                           child: Align(
                             alignment: Alignment.center,
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => PlayerPage(
+                                          musicModel: musicModel,
+                                        )));
+                              },
                               icon: Icon(
                                 Icons.play_circle,
                                 color: Colors.white.withOpacity(0.5),

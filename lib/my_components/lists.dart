@@ -27,4 +27,5 @@ class MusicRepo {
   List<MusicModel> home = [];
   List<MusicModel> playlist = [];
   List<MusicModel> artists = [];
+  List<MusicModel> todaysBiggestHits = [];
 }

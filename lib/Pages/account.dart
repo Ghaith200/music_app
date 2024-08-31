@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/homepage.dart';
+import 'package:music_app/my_components/favourite_playList_card.dart';
+import 'package:music_app/my_components/new_releases_widget.dart';
 
 class AccountScreen extends StatelessWidget {
   final MusicModel? musicModel;
@@ -61,7 +63,10 @@ class AccountScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 24, vertical: 8),
                     ),
-                    child: const Text('Edit'),
+                    child: const Text(
+                      'Edit',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   IconButton(
                       onPressed: () {},
@@ -90,19 +95,15 @@ class AccountScreen extends StatelessWidget {
           SizedBox(
             height: 150,
             child: ListView.builder(
-              itemCount: musicRepo.recommended.length,
               scrollDirection: Axis.horizontal,
+              itemCount: musicRepo.home.length,
               itemBuilder: (context, index) {
-                _buildPlaylistCard(
-                   'Unknown Title',
-                   'Unknown Artist',
-                );
-                return null;
+                return NewReleasesWidget(musicModel: musicRepo.home[index]);
               },
             ),
           ),
           const SizedBox(height: 20),
-          // Favorite Playlists Section
+
           const Text(
             'Favorite Playlists',
             style: TextStyle(
@@ -113,87 +114,14 @@ class AccountScreen extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           SizedBox(
-            height: 150,
+            height: 200,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: musicRepo.recommended.length,
+              itemCount: musicRepo.todaysBiggestHits.length,
               itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 7),
-                  child: SizedBox(
-                    width: 180,
-                    child: _buildFavoritePlaylistCard(
-                        'Unknown Thumbnail',
-                       'Unknown Title'),
-                  ),
-                );
+                return FavouritePlaylistCard(
+                    musicModel: musicRepo.todaysBiggestHits[index]);
               },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPlaylistCard(String imagePath, String title) {
-    return Container(
-      width: 150,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      decoration: BoxDecoration(
-        color: Colors.grey[800],
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        children: [
-          Container(
-            height: 100,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
-              ),
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(12)),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              title,
-              style: const TextStyle(fontSize: 14, color: Colors.white),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildFavoritePlaylistCard(String imagePath, String title) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[800],
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        children: [
-          Container(
-            height: 110,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
-              ),
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(12)),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
-            child: Text(
-              title,
-              style: const TextStyle(fontSize: 14, color: Colors.white),
-              textAlign: TextAlign.center,
             ),
           ),
         ],

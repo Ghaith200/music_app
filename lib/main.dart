@@ -38,10 +38,11 @@ class _MyAppState extends State<MyApp> {
 
   void _fetchData() async {
     ApiManger api = ApiManger();
+    await api.getArtists();
     await api.gethome();
     await api.getRecommended();
     await api.getPlaylist();
-    await api.getArtists();
+    await api.getTodaysBigestHits();
 
     setState(() {
       _isLoading = false;

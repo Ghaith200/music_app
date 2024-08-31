@@ -16,6 +16,7 @@ class Playlist extends StatefulWidget {
 
 class _PlaylistState extends State<Playlist> {
   Color? _dominantColor;
+  bool toggle = false;
 
   @override
   void initState() {
@@ -139,17 +140,24 @@ class _PlaylistState extends State<Playlist> {
                     ),
                     const Spacer(),
                     MaterialButton(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        onPressed: () {},
-                        child: const Row(
-                          children: [
-                            Icon(Icons.favorite_border),
-                            SizedBox(width: 5),
-                            Text("Favourite")
-                          ],
-                        ))
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      onPressed: () {},
+                      child: IconButton(
+                          iconSize: 30,
+                          color: Colors.red,
+                          icon: toggle
+                              ? const Icon(Icons.favorite_border)
+                              : const Icon(
+                                  Icons.favorite,
+                                ),
+                          onPressed: () {
+                            setState(() {
+                              toggle = !toggle;
+                            });
+                          }),
+                    )
                   ],
                 ),
               ),
