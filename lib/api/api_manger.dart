@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_log
 
 import 'dart:convert';
 import 'dart:developer';
