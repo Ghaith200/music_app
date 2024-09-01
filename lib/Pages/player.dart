@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:music_app/api/model/music_model.dart';
+import 'package:music_app/my_components/customProgressBar.dart';
+import 'package:music_app/my_components/custom_progress_indecator.dart';
 
 class PlayerPage extends StatelessWidget {
   const PlayerPage({super.key, required this.musicModel});
@@ -35,8 +37,28 @@ class PlayerPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
+                ListTile(
+                  title: Text(
+                    musicModel.musicTitle,
+                    style: const TextStyle(
+                        overflow: TextOverflow.ellipsis,
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    musicModel.musicAuthor,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  trailing: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.favorite_border_outlined,
+                        color: Colors.red,
+                      )),
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -64,7 +86,10 @@ class PlayerPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: AudioProgressBar(),
+                )
               ],
             ),
           )),

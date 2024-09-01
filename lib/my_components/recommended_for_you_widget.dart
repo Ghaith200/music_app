@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/Pages/player.dart';
 import 'package:music_app/api/model/music_model.dart';
 import 'package:music_app/my_components/custom_progress_indecator.dart';
 
-class  RecommendedForYouWidget extends StatelessWidget {
+class RecommendedForYouWidget extends StatelessWidget {
   const RecommendedForYouWidget({super.key, required this.musicModel});
   final MusicModel musicModel;
   @override
@@ -58,7 +59,14 @@ class  RecommendedForYouWidget extends StatelessWidget {
                     child: Transform.translate(
                       offset: const Offset(10, 20),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PlayerPage(
+                                        musicModel: musicModel,
+                                      )));
+                        },
                         icon: Icon(
                           Icons.play_circle,
                           color: Colors.white.withOpacity(0.6),
