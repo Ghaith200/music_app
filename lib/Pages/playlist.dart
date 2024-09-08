@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../homepage.dart';
+import 'homepage.dart';
 import '../my_components/playListTile.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'dart:ui';

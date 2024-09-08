@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'api/api_manger.dart';
-import 'locator.dart';
+import 'Pages/locator.dart';
 import 'my_components/custom_app_bar.dart';
-import 'homepage.dart';
+import 'Pages/homepage.dart';
 import 'my_components/custom_progress_indecator.dart';
 import 'my_components/myButtomNavBar.dart';
 import 'Pages/playlist.dart';

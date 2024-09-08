@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../api/model/music_model.dart';
-import '../homepage.dart';
+import 'homepage.dart';
 import '../my_components/favourite_playList_card.dart';
 import '../my_components/new_releases_widget.dart';
 
