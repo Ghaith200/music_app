@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/api/model/music_model.dart';
-import 'package:music_app/homepage.dart';
-import 'package:music_app/my_components/favourite_playList_card.dart';
-import 'package:music_app/my_components/new_releases_widget.dart';
+import '../api/model/music_model.dart';
+import '../homepage.dart';
+import '../my_components/favourite_playList_card.dart';
+import '../my_components/new_releases_widget.dart';
 
 class AccountScreen extends StatelessWidget {
   final MusicModel? musicModel;

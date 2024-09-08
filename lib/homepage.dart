@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/my_components/lists.dart';
-import 'package:music_app/locator.dart';
-import 'package:music_app/my_components/artists_for_you_widget.dart';
-import 'package:music_app/my_components/new_releases_widget.dart';
-import 'package:music_app/my_components/recommended_for_you_widget.dart';
+import 'my_components/lists.dart';
+import 'locator.dart';
+import 'my_components/artists_for_you_widget.dart';
+import 'my_components/new_releases_widget.dart';
+import 'my_components/recommended_for_you_widget.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});

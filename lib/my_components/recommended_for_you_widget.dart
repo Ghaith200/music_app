@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:music_app/Pages/player.dart';
-import 'package:music_app/api/model/music_model.dart';
-import 'package:music_app/my_components/custom_progress_indecator.dart';
+import '../Pages/player.dart';
+import '../api/model/music_model.dart';
+import 'custom_progress_indecator.dart';
 
 class RecommendedForYouWidget extends StatelessWidget {
   const RecommendedForYouWidget({super.key, required this.musicModel});

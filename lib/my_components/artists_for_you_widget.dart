@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/Pages/player.dart';
-import 'package:music_app/api/model/music_model.dart';
+import '../api/model/music_model.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 

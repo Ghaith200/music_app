@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/homepage.dart';
-import 'package:music_app/my_components/playListTile.dart';
+import '../homepage.dart';
+import '../my_components/playListTile.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'dart:ui';
 

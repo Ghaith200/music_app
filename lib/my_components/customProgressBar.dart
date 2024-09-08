@@ -1,15 +1,18 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class AudioProgressBar extends StatefulWidget {
   final double height;
   final double ballSize;
 
-  AudioProgressBar({
+  const AudioProgressBar({super.key, 
     this.height = 7.0, // Height of the progress bar
     this.ballSize = 12.0, // Size of the draggable ball (thumb)
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _AudioProgressBarState createState() => _AudioProgressBarState();
 }
 
@@ -69,7 +72,7 @@ class _AudioProgressBarState extends State<AudioProgressBar> {
                       color: Colors.red,
                       shape: BoxShape.circle,
                       border: Border.all(color: Colors.white, width: 1.0),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black26,
                           blurRadius: 4,

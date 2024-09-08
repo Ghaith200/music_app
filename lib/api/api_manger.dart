@@ -1,8 +1,8 @@
 
 import 'dart:convert';
 import 'dart:developer';
-import 'package:music_app/api/model/music_model.dart';
-import 'package:music_app/homepage.dart';
+import 'model/music_model.dart';
+import '../homepage.dart';
 
 import 'api_header.dart';
 import 'package:http/http.dart' as http;

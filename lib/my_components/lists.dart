@@ -1,4 +1,4 @@
-import 'package:music_app/api/model/music_model.dart';
+import '../api/model/music_model.dart';
 
 class Lists {
   // List artistsForYou = [

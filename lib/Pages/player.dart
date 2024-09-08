@@ -1,9 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:music_app/api/model/music_model.dart';
-import 'package:music_app/my_components/customProgressBar.dart';
-import 'package:music_app/my_components/custom_progress_indecator.dart';
-import 'package:music_app/my_components/lyrics.dart';
+import '../api/model/music_model.dart';
+import '../my_components/customProgressBar.dart';
+import '../my_components/lyrics.dart';
 
 class PlayerPage extends StatefulWidget {
   const PlayerPage({super.key, required this.musicModel});
@@ -73,7 +72,7 @@ class _PlayerPageState extends State<PlayerPage> {
                     ),
                     trailing: IconButton(
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.favorite_border_outlined,
                           color: Colors.red,
                         )),
@@ -85,34 +84,34 @@ class _PlayerPageState extends State<PlayerPage> {
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.keyboard_double_arrow_left_rounded),
+                          icon: const Icon(Icons.keyboard_double_arrow_left_rounded),
                           iconSize: 40,
                           color: Colors.white,
                         ),
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.play_circle_outlined),
+                          icon: const Icon(Icons.play_circle_outlined),
                           iconSize: 50,
                           color: Colors.white,
                         ),
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.keyboard_double_arrow_right),
+                          icon: const Icon(Icons.keyboard_double_arrow_right),
                           iconSize: 40,
                           color: Colors.white,
                         ),
                       ],
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     child: AudioProgressBar(),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 66, 64, 64),
+                        color: const Color.fromARGB(255, 66, 64, 64),
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
@@ -124,23 +123,21 @@ class _PlayerPageState extends State<PlayerPage> {
                   ),
                 ],
               ),
-              Container(
-                child: DraggableScrollableSheet(
-                    controller: draggableScrollableController,
-                    builder: (context, controller) {
-                      return Container(
-                          decoration: BoxDecoration(
-                            color: Colors
-                                .transparent, //Color.fromARGB(255, 66, 64, 64),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20),
-                            ),
+              DraggableScrollableSheet(
+                  controller: draggableScrollableController,
+                  builder: (context, controller) {
+                    return Container(
+                        decoration: const BoxDecoration(
+                          color: Colors
+                              .transparent, //Color.fromARGB(255, 66, 64, 64),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
                           ),
-                          child: ListView(
-                              controller: controller, children: [Lyrics()]));
-                    }),
-              )
+                        ),
+                        child: ListView(
+                            controller: controller, children: const [Lyrics()]));
+                  })
             ],
           ),
         ),

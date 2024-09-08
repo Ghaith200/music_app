@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/api/api_manger.dart';
-import 'package:music_app/locator.dart';
-import 'package:music_app/my_components/custom_app_bar.dart';
-import 'package:music_app/homepage.dart';
-import 'package:music_app/my_components/custom_progress_indecator.dart';
-import 'package:music_app/my_components/myButtomNavBar.dart';
-import 'package:music_app/Pages/playlist.dart';
-import 'package:music_app/Pages/account.dart';
+import 'api/api_manger.dart';
+import 'locator.dart';
+import 'my_components/custom_app_bar.dart';
+import 'homepage.dart';
+import 'my_components/custom_progress_indecator.dart';
+import 'my_components/myButtomNavBar.dart';
+import 'Pages/playlist.dart';
+import 'Pages/account.dart';
 
 void main() async {
   setup();

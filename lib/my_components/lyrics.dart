@@ -5,7 +5,7 @@ class Lyrics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       height: 300,
       child: Center(
         child: Text("Lyrics Are Here"),
